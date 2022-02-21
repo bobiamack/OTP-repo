@@ -18,9 +18,7 @@ def generatePad(message):
 
 # encrypts message using one-time pad
 def encrypt(pad,message):
-    # get message and pad from user input
-    #message = input("Please enter message you would like to encrypt: ")
-    #pad = input("Please enter pad you would like to use: ")
+
     # initialize lists of numbers
     pad_nums = []
     message_nums = []
@@ -67,17 +65,11 @@ def encrypt(pad,message):
         else:
             encryption.append(character)
 
-    #print("pad nums:", pad_nums)
-    #print("message nums:", message_nums)
-    #print("encryption nums:",encryption_nums)
     return "".join(encryption)
     #print("Encrypted message: ", "".join(encryption))
     
 
 def decipher(pad,message):
-    # get message and pad from user input
-    #message = input("Please enter message you would like to decipher: ")
-    #pad = input("Please enter pad: ")
 
     # initialize lists of numbers
     pad_nums = []
@@ -128,8 +120,3 @@ def decipher(pad,message):
 
     return "".join(decrypted)
     #print("Decrypted message: ", "".join(decrypted))
-
-#decipher(pad_text, encrypted_text)
-encrypt("QWERTYUIOP", "Rally Day!")
-decipher("QWERTYUIOP", "Hwpcr Bug!")
-#generatePad("hello!")
