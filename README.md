@@ -1,4 +1,6 @@
 # OTP-repo
 
-The otp-tests.py runs 
-The otp.py file has 3 functions: 
+The otp.py file has 3 functions: generatePad(), encrypt(), and decipher(). Each test does respectively what they're named. generatePad() generates a one-time pad based off of the lengthof the user's inputted message. encrypt() encrypts a message based off of provided user message and pad. decipher() does the opposite of encrypt(), using the provided user pad and encrypted message to decrypt the message. For the sake of the otp-tests.py, these functions all return the messages instead of printing them. For each function, I appended each character to a list and then returned the joined list. For encrypt() and decipher(), I iterated through each character of the message, changed each alphanumeric character to a number, applied the pad in desired manner, and then changed the numbers back to characters. 
+
+
+The otp-tests.py file runs 6 pytests that tests each function twice. generatePad() pad should a generate a pad of only capital letters that is longer the user message, so I tested if the generated pad was longer than the provided message whether it had lowercase, uppcasae, non-alphanumeric symbols, or all of the above. encrypt() and decipher() should be able to produce the same outputs as each other's inputs so I ran two tests for each function that tests that along with change in lower/uppercase letters.
