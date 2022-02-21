@@ -1,7 +1,4 @@
-from ast import arg
 import random
-import sys
-import getopt
 
 # generate one-time pad that uses random, always longer than messsage itself
 def generatePad(message):
@@ -136,51 +133,3 @@ def decipher(pad,message):
 encrypt("QWERTYUIOP", "Rally Day!")
 decipher("QWERTYUIOP", "Hwpcr Bug!")
 #generatePad("hello!")
-
-def main(argv):
-    padinfile = ''
-    unencryptedfile = ''
-    encryptedfile = ''
-
-    try:
-        opts, args = getopt.getopt(argv,"mp:ed:w")
-    except getopt.GetoptError:
-        print('Please check the manual with m to see valid commands.')
-        sys.exit(2)
-    if not opts or len(opts) > 2:
-        print('Too many arguments. Please check the manual with -m to see valid commands')
-        sys.exit(2)
-    for opt, args in opts:
-        if opt == '-m':
-            print('Manual for one-time pad cipher\n-p <padfile>: Generate a 10,000 character one-time pad and store it in <padfile>.\n-e <inputfile> -w <padfile>: Encrypt the <inputfile> using one-ti9me pad in <padfile>. \n-d <inputfile> -w <padfile>: Decrypt the <inputfile> using one-time pad in <padfile>.')
-            sys.exit()
-        elif opt == "-p":
-            generatePad()
-        elif opt == "-e":
-            unencryptedfile = arg
-        elif opt == "-d":
-            encryptedfile = arg
-        elif opt == "-w":
-            padinfile = arg
-    
-    if unencryptedfile and padinfile:
-        with open(unencryptedfile) as file:
-            message = file.read()
-        with open("encrypted-message.txt", "w") as file:
-            file.write(encrypt(message,padinfile))
-        print("The message in", unencryptedfile, "has been encryprted and saved to encrypted-message.txt")
-    elif encryptedfile and padinfile:
-        with open(encryptedfile) as file:
-            message = file.read()
-        with open("decrypted-message.txt", "w") as file:
-            file.write(decipher(message,padinfile))
-        print("The message in", encryptedfile, "has been decrypted and saved to decrypted-message.txt")
-    else:
-        print("Incorrect number of arguments. please check the manual with -m to see calid commands.")
-
-if __name__ == "__main__":
-    main(sys.argv[1:])
-        
-
-
-
